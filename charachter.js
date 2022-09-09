@@ -39,22 +39,23 @@ game = {
     ]
 }
 
-function foo(barr) {
+function foo() {
+    let barr = [];
     for (let i = 0; i < game.suspects.length; i++) {
         // console.log('outer loop');
-        let chars = game.suspects[i];
-        for (attributes in chars) {
+        let susp = game.suspects[i];
+        for (attributes in susp) {
             // console.log('inner loop');
-            console.log(chars[attributes]);
+            console.log(susp[attributes]);
             if (attributes === 'color') {
-                barr.push(chars[attributes])
+                barr.push(susp[attributes])
             }
         }
     }
+    console.log(barr);
     return barr;
 }
-let barr = [];
-let [a,b] = foo(barr);
+let [a,b] = foo();
 // foo(barr);
 // console.log(barr);
 console.log(`\n`)
@@ -62,5 +63,17 @@ console.log(`\n`)
 console.log(a);
 console.log(b);
 
+// one way of deconstructing
+var [color, color2] = [game.suspects[0].color, game.suspects[1].color];
+console.log(`\ndeconstructing`);
+console.log(color2);
+console.log(color);
 
+// another way of deconstructing
+var [{color: firstColor}, {color: secondColor}] = game.suspects;
+console.log(`\nNow the other way`);
+console.log(firstColor);
+console.log(secondColor);
 
+console.log(`\nforEach() function`)
+// [colorUno, colorDos] = [game.suspects.forEach((elem) => {return elem.color})];
