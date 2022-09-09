@@ -83,7 +83,7 @@ function CreateSuspectObjects(name) {
         name: name,
         color: name.split(' ')[1],
         speak () {
-            console.log('My name is ', name)
+            console.log('My name is', name)
         }
     }
 }
@@ -92,3 +92,18 @@ var suspects = ['Miss Scarlet', ' Colonel Mustard', 'Mr. White'];
 
 
 var suspectsList = [];
+// classic way of doing it
+// for (var i = 0; i < suspects.length; i++) {
+//     suspectsList.push(CreateSuspectObjects(suspects[i]))
+// }
+// suspectsList[1].speak();
+// _.each way of doing it
+suspects.forEach( function(name) {
+    suspectsList.push(CreateSuspectObjects(name))
+});
+console.log(suspectsList);
+
+var _ = {
+    each(list, callback)
+    
+};
