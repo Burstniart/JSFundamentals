@@ -74,6 +74,21 @@ var [{color: firstColor}, {color: secondColor}] = game.suspects;
 console.log(`\nNow the other way`);
 console.log(firstColor);
 console.log(secondColor);
+console.log(`\n`);
 
 console.log(`\nforEach() function`)
-// [colorUno, colorDos] = [game.suspects.forEach((elem) => {return elem.color})];
+
+function CreateSuspectObjects(name) {
+    return {
+        name: name,
+        color: name.split(' ')[1],
+        speak () {
+            console.log('My name is ', name)
+        }
+    }
+}
+
+var suspects = ['Miss Scarlet', ' Colonel Mustard', 'Mr. White'];
+
+
+var suspectsList = [];
