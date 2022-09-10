@@ -106,15 +106,24 @@ var suspectsList = [];
 // _.each way of doing it
 // resume here
 
-var _ = {
-    each(list, callback) {
-        for (i in list) {
-            callback(list[i]);
+// each doesn't return anything
+var _ = {};
+_.each = function (list, callback) {
+    if (Array.isArray(list)) {
+        for (var i = 0; i < list.length; i++) {
+            callback(list[i], i, list)
         }
+    } else {
+        for (key in list) {
+            callback(list[i], key, list);
+        }
+
     }
-};
-function calling (name) {
-    console.log(name)
 }
-_.each(suspects, CreateSuspectObjects);
-// console.log(_.each(suspects, CreateSuspectObjects));
+_.each(['moni', 'samy', 'lex'], function(name, i, list) {
+    if (list[i + 1]) {
+        console.log(name, 'is younger than', list[i + 1],);
+    } else {
+        console.log(name, 'is the oldest');
+    }
+})
