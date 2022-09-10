@@ -127,3 +127,25 @@ _.each(['moni', 'samy', 'lex'], function(name, i, list) {
         console.log(name, 'is the oldest');
     }
 })
+
+console.log(`\n_.map function working`)
+const weapons = ['candlestick', 'lead pipe', 'revolver']
+console.log(weapons)
+const makeBroken = (item) => {
+    return `broken ${item}`;
+}
+
+_.map = function(list, callback) {
+    var arr2 = [];
+    // for (var i = 0; i < list.length; i ++) {
+    //     arr2.push(callback(list[i], i, list));
+    // }
+    //using _.each method
+    _.each(list, function(v, i , list) {
+        arr2.push(callback(v, i, list))
+    })
+    return arr2;
+}
+
+var brokenWeapons = _.map(weapons, makeBroken);
+console.log(brokenWeapons);
