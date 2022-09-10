@@ -97,13 +97,24 @@ var suspectsList = [];
 //     suspectsList.push(CreateSuspectObjects(suspects[i]))
 // }
 // suspectsList[1].speak();
+
+// suspects.forEach( function(name) {
+//     suspectsList.push(CreateSuspectObjects(name))
+// });
+// console.log(suspectsList);
+
 // _.each way of doing it
-suspects.forEach( function(name) {
-    suspectsList.push(CreateSuspectObjects(name))
-});
-console.log(suspectsList);
+// resume here
 
 var _ = {
-    each(list, callback)
-    
+    each(list, callback) {
+        for (i in list) {
+            callback(list[i]);
+        }
+    }
 };
+function calling (name) {
+    console.log(name)
+}
+_.each(suspects, CreateSuspectObjects);
+// console.log(_.each(suspects, CreateSuspectObjects));
