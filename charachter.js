@@ -1,3 +1,4 @@
+
 console.log("Create character objectse")
 
 var game = {};
