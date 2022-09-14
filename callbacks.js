@@ -9,3 +9,17 @@ console.log(xx);
 let yy =doMathSoIDontHaveTo(4, increment);
 console.log(yy);
 
+
+var reduce = function(list, cb, initial) {
+    let memo = initial;
+    for (var i = 0; i < list.length; i++) {
+        if (i === 0 & !!memo == undefined) {
+            memo = list[0]
+        } else {
+            memo = cb(list[i], memo);
+        }
+    }
+    return memo;
+}
+
+console.log(reduce([1,2,3], (v, sum) => v + sum, 0));
