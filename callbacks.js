@@ -83,7 +83,7 @@ const newDevelopment = [
 // next suspect check, if finds room true the in pops it out of the array
 // repeat until done
 
-var notInRoom = (suspect, memo) => {
+var notInRoom = suspect => {
     const emptyRooms = reduce(suspect.rooms, (room, memo) => {
         if (room === false) memo.push(room)
         return memo
