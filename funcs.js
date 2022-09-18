@@ -91,9 +91,3 @@ var x = videoData.filter(sus => {return sus.present});
 var y = x.map(y => {return y.name});
 
 console.log(y);
-
-const from = arr => {
-    return Array.prototype.slice.call(arr)
-}
-
-
