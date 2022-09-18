@@ -1,4 +1,3 @@
-Should delete this
 const videoData = [
     {
         name: 'Miss Scarlet',
