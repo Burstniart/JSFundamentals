@@ -30,6 +30,27 @@ function forEachu(array, callback){
         callback(array[i]);
     }
 }
+// Challenge 5
+// In challenge 3, you've created a function called map. In this challenge, you're going to rebuild the map function by creating a function called mapWith. This time you're going to use forEach inside of mapWith instead of using a for loop.
+
+function mapWith(array, callback) {
+    let arr = [];
+    forEachu(array, function(item) {
+        arr.push(callback(item));
+    });
+    return arr;
+}
+
+//Challenge 6
+//Create a function called reduce that takes an array and reduces the elements to a single value. For example it can sum all the numbers, multiply them, or any operation that you can put into a function.
+
+function reduceU(array, callback, initiator) {
+    let res = initiator;
+    for (let i = 0; i < array.length; i++) {
+       res = callback(res, array[i]);
+    }
+    return res;
+}
 // added package.json "{"type" : "module"}" to use cli pritning in node
 // this is modules, not comminjs
 import { createInterface } from 'readline';
@@ -38,9 +59,20 @@ const rl = createInterface({
     input: process.stdin,
     output: process.stdout
 });
-const myArr = ['a','b','c'];
-console.log(forEachu(myArr, addS));
+
+const myArr = [1,2,3];
+function addU(a, b) {
+    return a + b;
+}
+const res = reduceU(myArr, addU, 3);
+console.log(res);
 rl.close();
+/* C4-5
+const myArr = ['a','b','c'];
+const res = mapWith(myArr, addS)
+console.log(res);
+rl.close();
+*/
 /*C3
 const myArr = [1,2,3];
 const newArray = mapu(myArr,addTwo);
