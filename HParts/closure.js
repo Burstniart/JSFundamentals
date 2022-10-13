@@ -48,13 +48,71 @@ function once(callback) {
     }
     return innerFunc;
 }
+
+// Challenge 5
+// Write a function after that takes the number of times the callback needs to be called before being executed as the first parameter and the callback as the second parameter.
+
+
+function after(times, callback) {
+    let counter = 0;
+    function nowExecute(val) {
+        if (++counter >= times) {
+            callback(val);
+        }
+    }
+    return nowExecute;
+}
+// Challenge 6
+// Write a function delay that accepts a callback as the first parameter and the wait in milliseconds before allowing the callback to be invoked as the second parameter. Any additional arguments after wait are provided to func when it is invoked. HINT: research setTimeout();
+
+function delay(callback, waitFor) {
+    function timesUp(params) {
+        setTimeout((params) => {
+            callback(params);
+        }, waitFor);
+    }
+    return timesUp;
+}
+// Challenge 7
+// Write a function rollCall that accepts an array of names and returns a function. The first time the returned function is invoked, it should log the first name to the console. The second time it is invoked, it should log the second name to the console, and so on, until all names have been called. Once all names have been called, it should log 'Everyone accounted for'.
+
+function rollCall(names) {
+    let counter = 0;
+    return () => {
+        counter < names.length ? console.log(names[counter]) : console.log('Everyone accounted for');
+        counter++;
+    }
+}
 //
 import { createInterface } from 'readline';
 const rl = createInterface ({
     input: process.stdin,
     output: process.stdout
 });
-
+const namus = ['Moni','Lex','Sam'];
+const callAName = rollCall(namus);
+callAName();
+callAName();
+callAName();
+callAName();
+rl.close();
+/*C6
+const greet = () => {console.log("Heyeyeyeyeeeyeye")};
+const waitFive = delay(greet, 5000);
+waitFive();
+rl.close();
+*/
+/*C5
+const greet= () => {console.log("Heyeyeyeyeeeyeye")};
+const afterCalled = after(2, greet);
+console.log("Called once")
+afterCalled();
+console.log("Called twice")
+afterCalled();
+console.log("Called thrice")
+afterCalled();
+rl.close();
+*/
 /*C4
 const addByTwo = addByX(2);
 const onceFunc = once(addByTwo);
