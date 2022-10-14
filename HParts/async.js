@@ -31,9 +31,34 @@ function brokenRecord() {
 //Create a function limitedRepeat that console logs hi for now every second, but only for 5 seconds. Research how to use clearInterval if you are not sure how to do this.
 
 function limitedRepeat() {
-    setTimeout(clearInterval(greet, 5000));
-    setInterval(function greet(){  console.log('hi')}, 1000);
+    const greet = setInterval(() =>  console.log('hi'), 1000);
+    setTimeout(() => clearInterval(greet), 5000);
+}
+// Challenge 6
+// Write a function called everyXsecsForYsecs that will accept three arguments: a function func, a number interval, and another number duration.
 
+function everyXsecsForYSecs(func, interval, duration) {
+    const doThis = setInterval(func, interval);
+    setTimeout(() => clearInterval(doThis), duration);
+}
+// Challenge 7
+// Write a function delayCounter that accepts a number (called 'target') as the first argument and a number of milliseconds (called 'wait') as the second argument, and returns a function.
+//
+// When the returned function is invoked, it should log to the console all of the numbers between 1 and the target number, spaced apart by 'wait' milliseconds.
+
+function delayCounter(target, wait) {
+    let interval;
+    let counter = 0;
+    return function inner() {
+        if (counter === 0) {
+        counter++;
+        interval = setInterval(() => console.log(inner()), wait);
+        } else if (counter === target) {
+            clearInterval(interval);
+        } else {
+            return counter++;
+        }
+    }
 }
 //
 import { createInterface } from 'readline';
@@ -41,8 +66,21 @@ const rl = createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
+/*C7
+const doFive = delayCounter(6, 1000);
+doFive();
+rl.close();
+*/
+/*C6
+const greet = () => console.log('hi pal');
+const in2For6= () => everyXsecsForYSecs(greet, 3000, 7000);
+in2For6();
+rl.close();
+*/
+/*C5
 limitedRepeat();
+rl.close();
+*/
 /*C4
 brokenRecord();
 */
